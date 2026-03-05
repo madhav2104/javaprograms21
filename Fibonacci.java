@@ -6,6 +6,6 @@ public class Fibonacci {
             System.out.print(a + (i < n - 1 ? " " : ""));
             long t = a + b; a = b; b = t;
         }
-        System.out.println();
+        System.out.println()
     }
 }
