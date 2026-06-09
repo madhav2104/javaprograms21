@@ -12,3 +12,4 @@ public class AnagramCheck {
         return Arrays.equals(x, y);
     }
 }
+#java file
