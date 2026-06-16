@@ -1,0 +1,17 @@
+SECTION 3 — CANONICAL DATA MODEL (CDM) INSIGHTS
+
+
+Overview
+The domain addressed by this CDM initiative is enterprise customer and system metadata management. The purpose is to centralize and standardize the storage and usage of key attributes, eliminating redundancy and ensuring consistent, high-quality data across all business systems and pipelines.
+
+Entity Design
+The canonical model introduces two primary entities: Customer Master and System Metadata. The Customer Master consolidates all customer-related attributes, including PII fields such as email and phone, under a single, canonical customer_id. The System Metadata entity centralizes system-related attributes such as systemId, systemVersion, and serviceName. Both entities are designed for normalization, ensuring that each attribute is stored only once and referenced via foreign keys in transactional data.
+
+Relationships
+Transactional and event data reference the Customer Master and System Metadata entities via foreign keys, establishing clear, one-to-many relationships. Each transaction is linked to a single customer and a single system, while each customer and system may be associated with multiple transactions. This design supports efficient joins and enables a unified view of customer and system activity across the enterprise.
+
+Governance & Compliance
+PII fields, including email and phone, are stored exclusively in the Customer Master and are subject to masking and access controls in accordance with governance policies. These fields are explicitly excluded from transactional tables to minimize compliance risk. The model supports schema versioning and auditability, ensuring that changes to master entities are tracked and that data lineage is maintained.
+
+Scalability & Architecture
+The CDM is designed for scalability, supporting high event volumes and future growth in both data volume and complexity. The architecture is compatible with modern data platforms such as Databricks and supports efficient data ingestion, processing, and integration. Schema consistency and versioning are enforced to ensure smooth interoperability across systems, and the model is resilient to changes in upstream and downstream data sources.
